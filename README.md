@@ -31,7 +31,7 @@ and anything else you like. When you're done, open your controller's .h file and
 for the DownPicker wrapper:
 
     #import "DownPicker.h"
-  
+    
     @property (strong, nonatomic) DownPicker *downPicker;
 
 Then switch to the .m file and add these lines to your controller's **viewDidAppear** method:
