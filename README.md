@@ -11,7 +11,7 @@ and turns it into this:
 
 ![alt text](https://raw.githubusercontent.com/Darkseal/DownPicker/gh-pages/images/DownPicker/UITextField.DownPicker.png "Here's a DownPicker control")
 
- As simple as that. You only need to provide an array of data.
+ It's as simple as that. You only need to provide an array of data.
  
 ## How does it work
 DownPicker is basically a *control interface wrapper*, meaning that you won't use it as a control - 
