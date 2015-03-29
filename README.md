@@ -1,4 +1,4 @@
-# DownPicker
+# DownPicker: DropDownList / ComboBox alternative for iOS
 DownPicker is an extremely light-weight class library for creating *DropDownList* / *ComboBox* controls for iOS that will behave like their HTML / Android counterparts.
 You'll only need a standard **UITextField** and few lines of code.
 
