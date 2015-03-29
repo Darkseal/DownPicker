@@ -6,7 +6,7 @@
 // by Darkseal, 2013-2015 - MIT License
 //
 // Website: http://www.ryadel.com/
-// GitHub:  https://github.com/Darkseal/DownPicker
+// GitHub:  http://www.ryadel.com/
 //
 
 
@@ -18,25 +18,40 @@
 
 -(id)initWithTextField:(UITextField *)tf
 {
+    return [self initWithTextField:tf withData:nil];
+}
+
+-(id)initWithTextField:(UITextField *)tf withData:(NSMutableArray*) data
+{
     self = [super init];
     if (self) {
         self->textField = tf;
         self->textField.delegate = self;
         
+        // set language defaults
+        self->placeholder = @"Tap to choose...";
+        self->placeholderWhileSelecting = @"Pick an option...";
+        
         // hide the caret and its blinking
         [[textField valueForKey:@"textInputTraits"]
-            setValue:[UIColor clearColor]
-            forKey:@"insertionPointColor"];
+         setValue:[UIColor clearColor]
+         forKey:@"insertionPointColor"];
         
         // set the placeholder
-        self->textField.placeholder = @"Tap to choose...";
+        self->textField.placeholder = self->placeholder;
         
-        // set the DownPicker arrow to the right (you can replace it with any 32x24 px transparent image: changing size might give different results)
-        self->textField.rightViewMode = UITextFieldViewModeAlways;
+        // show the arrow image
         self->textField.rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"downArrow.png"]];
+        [self showArrowImage:YES];
+        
+        // set the data array (if present)
+        if (data != nil) {
+            [self setData: data];
+        }
     }
     return self;
 }
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -64,11 +79,6 @@
     return [dataArray objectAtIndex:row];
 }
 
--(void) setData:(NSMutableArray*) data
-{
-    dataArray = data;    
-}
-
 -(void)doneClicked:(id) sender
 {
     [textField resignFirstResponder]; //hides the pickerView
@@ -76,7 +86,7 @@
 
 - (IBAction)showPicker:(id)sender
 {
-    self->textField.placeholder = @"Pick an option...";
+    self->textField.placeholder = self->placeholderWhileSelecting;
     pickerView = [[UIPickerView alloc] init];
     pickerView.showsSelectionIndicator = YES;
     pickerView.dataSource = self;
@@ -115,5 +125,47 @@
     return NO;
 }
 
+// Utility Methods
+-(void) setData:(NSMutableArray*) data
+{
+    dataArray = data;
+}
+
+-(void) showArrowImage:(BOOL)b
+{
+    if (b == YES) {
+      // set the DownPicker arrow to the right (you can replace it with any 32x24 px transparent image: changing size might give different results)
+        self->textField.rightViewMode = UITextFieldViewModeAlways;
+    }
+    else {
+        self->textField.rightViewMode = UITextFieldViewModeNever;
+    }
+}
+
+-(void) setArrowImage:(UIImage*)image
+{
+    self->textField.rightView = [[UIImageView alloc] initWithImage:image];
+}
+
+-(void) setPlaceholder:(NSString*)str
+{
+    self->placeholder = str;
+    self->textField.placeholder = self->placeholder;
+}
+
+-(void) setPlaceholderWhileSelecting:(NSString*)str
+{
+    self->placeholderWhileSelecting = str;
+}
+
+-(UIPickerView*) getPickerView
+{
+    return self->pickerView;
+}
+
+-(UITextField*) getTextField
+{
+    return self->textField;
+}
 
 @end
