@@ -30,6 +30,8 @@ designer tool or do it programmatically; you can also set up constraints, custom
 and anything else you like. When you're done, open your controller's .h file and create a property 
 for the DownPicker wrapper:
 
+    #import "DownPicker.h"
+  
     @property (strong, nonatomic) DownPicker *downPicker;
 
 Then switch to the .m file and add these lines to your controller's **viewDidAppear** method:
