@@ -28,7 +28,7 @@ However, if you don't like the *control wrapper* pattern, you can just use it as
 Download the latest version from [this link](https://github.com/Darkseal/DownPicker/archive/master.zip), 
 then unzip & drag-drop the /DownPicker/ folder inside your iOS project. You can do that directly within XCode,
 just be sure you have the **copy items if needed** and the **create groups** options checked.
-  
+
 Once you did that, add (or choose) a **UITextField** you would like to transform to a DownPicker. You can use the Storyboard 
 designer tool or do it programmatically; you can also set up constraints, custom placement/coords, font, colors 
 and anything else you like. When you're done, open your controller's .h file and create a property 
@@ -55,6 +55,25 @@ Then switch to the .m file and add these lines to your controller's **viewDidApp
     self.downPicker = [[DownPicker alloc] initWithTextField:self.yourTextField withData:bandArray];
 
 That's it. You can retrieve the user's choice at any time using `self.datePicker.text` or `textField.text`.
+
+### Installing as a Custom Control
+If you want to use DownPicker as custom control, just instantiate the included **UIDownPicker** class programmatically and attach it to your view like any other legacy UI control:
+
+    @interface YourViewController () {
+        UIDownPicker *_dp;
+    }
+    @end
+
+    @end
+    - (void)viewDidLoad
+    {
+        [super viewDidLoad];
+        _dp = [[UIDownPicker] initWithData:yourMutableArray];
+        [self.view addSubview:_dp]; 
+    }
+    
+You can then customize it using the inner DownPicker public property.
+
 
 ## Additional Features
 You can also:
