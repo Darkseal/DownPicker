@@ -1,37 +1,25 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Downpicker : Lightweight DropDownList / ComboBox UI control for iOS, written in Objective-C">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Downpicker</title>
+    <meta charset="UTF-8">
+    <title>Downpicker by Darkseal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
+    <section class="page-header">
+      <h1 class="project-name">Downpicker</h1>
+      <h2 class="project-tagline">Lightweight DropDownList / ComboBox UI control for iOS, written in Objective-C</h2>
+      <a href="https://github.com/Darkseal/DownPicker" class="btn">View on GitHub</a>
+      <a href="https://github.com/Darkseal/DownPicker/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/Darkseal/DownPicker/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/Darkseal/DownPicker">View on GitHub</a>
-
-          <h1 id="project_title">Downpicker</h1>
-          <h2 id="project_tagline">Lightweight DropDownList / ComboBox UI control for iOS, written in Objective-C</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/Darkseal/DownPicker/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/Darkseal/DownPicker/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
+    <section class="main-content">
+      <h1>
 <a id="downpicker" class="anchor" href="#downpicker" aria-hidden="true"><span class="octicon octicon-link"></span></a>DownPicker</h1>
 
 <p>DownPicker is an extremely light-weight class library for creating <em>DropDownList</em> / <em>ComboBox</em> controls for iOS that will behave like their HTML / Android counterparts.
@@ -50,6 +38,8 @@ You'll only need a standard <strong>UITextField</strong> and few lines of code.<
 
 <p>It's as simple as that. You only need to provide an array of data.</p>
 
+<p><strong>NOTE</strong>: If you don't like the <em>control wrapper</em> approach, you can also use it as a <em>custom control</em> via the included <strong>UIDownPicker</strong> class: read the following paragraph for more info.</p>
+
 <h2>
 <a id="how-does-it-work" class="anchor" href="#how-does-it-work" aria-hidden="true"><span class="octicon octicon-link"></span></a>How does it work</h2>
 
@@ -58,6 +48,8 @@ it will use an existing UITextField control instead.
 This is a good thing, because you'll be able to design, positioning and skin your UITextField like you always do, 
 programmatically or inside a <em>Storyboard</em> UI, depending on how you are used to work. You won't change your style, as it will 
 adapt to suit yours.</p>
+
+<p>However, if you don't like the <em>control wrapper</em> pattern, you can just use it as a <em>custom control</em> using the included <strong>UIDownPicker</strong> class. It's entirely up to you (and very easy to install in both scenarios).</p>
 
 <h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
@@ -71,7 +63,7 @@ designer tool or do it programmatically; you can also set up constraints, custom
 and anything else you like. When you're done, open your controller's .h file and create a property 
 for the DownPicker wrapper:</p>
 
-<pre><code>#import "DownPicker.h"
+<pre><code>#import "DownPicker.h";
 
 @property (strong, nonatomic) DownPicker *downPicker;
 </code></pre>
@@ -94,6 +86,27 @@ self.downPicker = [[DownPicker alloc] initWithTextField:self.yourTextField withD
 </code></pre>
 
 <p>That's it. You can retrieve the user's choice at any time using <code>self.datePicker.text</code> or <code>textField.text</code>.</p>
+
+<h3>
+<a id="installing-as-a-custom-control" class="anchor" href="#installing-as-a-custom-control" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing as a Custom Control</h3>
+
+<p>If you'd like to use DownPicker as a custom control instead, just instantiate the included <strong>UIDownPicker</strong> class programmatically and attach it to your view like any other legacy UI control:</p>
+
+<pre><code>@interface YourViewController () {
+    UIDownPicker *_dp;
+}
+@end
+
+@end
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    _dp = [[UIDownPicker] initWithData:yourMutableArray];
+    [self.view addSubview:_dp]; 
+}
+</code></pre>
+
+<p>You can then customize it using the inner DownPicker public property.</p>
 
 <h2>
 <a id="additional-features" class="anchor" href="#additional-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Additional Features</h2>
@@ -128,18 +141,16 @@ You can use <code>[UIImage imageNamed:@"yourCustomImage.png"]</code> to set any 
 <p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=F576E73P5X526"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" alt="Donate"></a></p>
 
 <p>Thanks a lot!</p>
-      </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Downpicker maintained by <a href="https://github.com/Darkseal">Darkseal</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/Darkseal/DownPicker">Downpicker</a> is maintained by <a href="https://github.com/Darkseal">Darkseal</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
 
-              <script type="text/javascript">
+    </section>
+
+            <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
@@ -150,6 +161,6 @@ You can use <code>[UIImage imageNamed:@"yourCustomImage.png"]</code> to set any 
             } catch(err) {}
           </script>
 
-
   </body>
 </html>
+
