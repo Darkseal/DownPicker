@@ -13,7 +13,7 @@ and turns it into this:
 
  It's as simple as that. You only need to provide an array of data.
    
- **NOTE**: If you don't like the *control wrapper* approach, you can also use it as a *custom control* via the provided *UIDownPicker* class: read the following paragraph for more info.
+ **NOTE**: If you don't like the *control wrapper* approach, you can also use it as a *custom control* via the included **UIDownPicker** class: read the following paragraph for more info.
  
 ## How does it work
 DownPicker is basically a *control interface wrapper*, meaning that you won't use it as a control - 
@@ -22,7 +22,7 @@ This is a good thing, because you'll be able to design, positioning and skin you
 programmatically or inside a *Storyboard* UI, depending on how you are used to work. You won't change your style, as it will 
 adapt to suit yours.
   
-However, if you don't like the *control wrapper* pattern, you can just use it as a *custom control* using the **UIDownPicker** class. It's entirely up to you (and very easy to install in both scenarios).
+However, if you don't like the *control wrapper* pattern, you can just use it as a *custom control* using the included **UIDownPicker** class. It's entirely up to you (and very easy to install in both scenarios).
 
 ## Installation
 Download the latest version from [this link](https://github.com/Darkseal/DownPicker/archive/master.zip), 
