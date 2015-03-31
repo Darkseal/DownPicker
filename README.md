@@ -57,7 +57,7 @@ Then switch to the .m file and add these lines to your controller's **viewDidApp
 That's it. You can retrieve the user's choice at any time using `self.datePicker.text` or `textField.text`.
 
 ### Installing as a Custom Control
-If you want to use DownPicker as custom control, just instantiate the included **UIDownPicker** class programmatically and attach it to your view like any other legacy UI control:
+If you'd like to use DownPicker as a custom control instead, just instantiate the included **UIDownPicker** class programmatically and attach it to your view like any other legacy UI control:
 
     @interface YourViewController () {
         UIDownPicker *_dp;
