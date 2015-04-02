@@ -82,6 +82,7 @@
 -(void)doneClicked:(id) sender
 {
     [textField resignFirstResponder]; //hides the pickerView
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
 - (IBAction)showPicker:(id)sender
