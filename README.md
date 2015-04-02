@@ -77,7 +77,9 @@ You can then customize it using the inner DownPicker public property.
 ## Status Change event handling
 You can bind your own delegate function to DownPicker's status change by using the `UIControlEventValueChanged` Control action in the following way:
 
-    [self.yourDownPicker addTarget:self action:@selector(dp_Selected:) forControlEvents:UIControlEventValueChanged];
+    [self.yourDownPicker addTarget:self 
+        action:@selector(dp_Selected:)
+        forControlEvents:UIControlEventValueChanged];
 
 and then:
 
