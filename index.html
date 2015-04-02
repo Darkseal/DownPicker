@@ -109,6 +109,24 @@ self.downPicker = [[DownPicker alloc] initWithTextField:self.yourTextField withD
 <p>You can then customize it using the inner DownPicker public property.</p>
 
 <h2>
+<a id="status-change-event-handling" class="anchor" href="#status-change-event-handling" aria-hidden="true"><span class="octicon octicon-link"></span></a>Status Change event handling</h2>
+
+<p>You can bind your own delegate function to DownPicker's status change by using the <code>UIControlEventValueChanged</code> Control action in the following way:</p>
+
+<pre><code>[self.yourDownPicker addTarget:self 
+    action:@selector(dp_Selected:)
+    forControlEvents:UIControlEventValueChanged];
+</code></pre>
+
+<p>and then:</p>
+
+<pre><code>-(void)dp_Selected:(id)dp {
+    NSString* selectedValue = [self.youtDownPicker text];
+    // do what you want
+}
+</code></pre>
+
+<h2>
 <a id="additional-features" class="anchor" href="#additional-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Additional Features</h2>
 
 <p>You can also:</p>
