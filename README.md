@@ -74,6 +74,19 @@ If you'd like to use DownPicker as a custom control instead, just instantiate th
     
 You can then customize it using the inner DownPicker public property.
 
+## Status Change event handling
+You can bind your own delegate function to DownPicker's status change by using the `UIControlEventValueChanged` Control action in the following way:
+
+    [self.yourDownPicker addTarget:self action:@selector(dp_Selected:) forControlEvents:UIControlEventValueChanged];
+
+and then:
+
+    -(void)dpAge_Selected:(id)dp {
+        NSString* selectedValue = [self.youtDownPicker text];
+        // do what you want
+    }
+
+
 
 ## Additional Features
 You can also:
