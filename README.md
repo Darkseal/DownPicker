@@ -83,7 +83,7 @@ You can bind your own delegate function to DownPicker's status change by using t
 
 and then:
 
-    -(void)dpAge_Selected:(id)dp {
+    -(void)dp_Selected:(id)dp {
         NSString* selectedValue = [self.youtDownPicker text];
         // do what you want
     }
