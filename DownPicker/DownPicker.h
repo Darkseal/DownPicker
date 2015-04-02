@@ -11,7 +11,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DownPicker : NSObject<UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
+@interface DownPicker : UIControl<UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 {
     UIPickerView* pickerView;
     IBOutlet UITextField* textField;
