@@ -24,10 +24,11 @@
 
 -(id)initWithTextField:(UITextField *)tf;
 -(id)initWithTextField:(UITextField *)tf withData:(NSMutableArray*) data;
+-(void) setArrowImage:(UIImage*)image;
 -(void) setData:(NSMutableArray*) data;
--(void) showArrowImage:(BOOL)b;
 -(void) setPlaceholder:(NSString*)str;
 -(void) setPlaceholderWhileSelecting:(NSString*)str;
+-(void) showArrowImage:(BOOL)b;
 -(UIPickerView*) getPickerView;
 -(UITextField*) getTextField;
 @end
