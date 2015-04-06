@@ -28,9 +28,13 @@
         self->textField = tf;
         self->textField.delegate = self;
         
+        // set UI defaults
+        self->toolbarStyle = UIBarStyleDefault;
+		
         // set language defaults
         self->placeholder = @"Tap to choose...";
         self->placeholderWhileSelecting = @"Pick an option...";
+		self->toolbarDoneButtonText = @"Done";
         
         // hide the caret and its blinking
         [[textField valueForKey:@"textInputTraits"]
@@ -97,7 +101,7 @@
     pickerView.delegate = self;
 
     UIToolbar* toolbar = [[UIToolbar alloc] init];
-    toolbar.barStyle = UIBarStyleDefault;
+    toolbar.barStyle = self->toolbarStyle;
     [toolbar sizeToFit];
     
     //to make the done button aligned to the right
@@ -105,7 +109,7 @@
     
     
     UIBarButtonItem* doneButton = [[UIBarButtonItem alloc]
-                                   initWithTitle:@"Done"
+                                   initWithTitle:self->toolbarDoneButtonText
                                    style:UIBarButtonItemStyleDone
                                    target:self
                                    action:@selector(doneClicked:)];
@@ -160,6 +164,16 @@
 -(void) setPlaceholderWhileSelecting:(NSString*)str
 {
     self->placeholderWhileSelecting = str;
+}
+
+-(void) setToolbarDoneButtonText:(NSString*)str
+{
+    self->toolbarDoneButtonText = str;
+}
+
+-(void) setToolbarStyle:(UIBarStyle)style;
+{
+    self->toolbarStyle = style;
 }
 
 -(UIPickerView*) getPickerView

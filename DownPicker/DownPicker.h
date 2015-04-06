@@ -18,6 +18,8 @@
     NSMutableArray* dataArray;
     NSString* placeholder;
     NSString* placeholderWhileSelecting;
+	NSString* toolbarDoneButtonText;
+	UIBarStyle toolbarStyle;
 }
 
 @property (retain, nonatomic) NSString* text;
@@ -28,6 +30,8 @@
 -(void) setData:(NSMutableArray*) data;
 -(void) setPlaceholder:(NSString*)str;
 -(void) setPlaceholderWhileSelecting:(NSString*)str;
+-(void) setToolbarDoneButtonText:(NSString*)str;
+-(void) setToolbarStyle:(UIBarStyle)style;
 -(void) showArrowImage:(BOOL)b;
 -(UIPickerView*) getPickerView;
 -(UITextField*) getTextField;
