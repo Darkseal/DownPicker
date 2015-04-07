@@ -101,8 +101,8 @@ self.downPicker = [[DownPicker alloc] initWithTextField:self.yourTextField withD
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _dp = [[UIDownPicker] initWithData:yourMutableArray];
-    [self.view addSubview:_dp]; 
+    self._dp = [[UIDownPicker] initWithData:yourMutableArray];
+    [self.view addSubview:self._dp]; 
 }
 </code></pre>
 
