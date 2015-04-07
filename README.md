@@ -69,7 +69,7 @@ If you'd like to use DownPicker as a custom control instead, just instantiate th
     {
         [super viewDidLoad];
         self._dp = [[UIDownPicker] initWithData:yourMutableArray];
-        [self.view addSubview:_dp]; 
+        [self.view addSubview:self._dp]; 
     }
     
 You can then customize it using the inner DownPicker public property.
