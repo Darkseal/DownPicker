@@ -89,16 +89,29 @@
 -(void)doneClicked:(id) sender
 {
     [textField resignFirstResponder]; //hides the pickerView
+    if (self->textField.text.length == 0) {
+      textField.text = [dataArray objectAtIndex:0];
+    }
     [self sendActionsForControlEvents:UIControlEventValueChanged];
+  
 }
 
 - (IBAction)showPicker:(id)sender
 {
-    self->textField.placeholder = self->placeholderWhileSelecting;
     pickerView = [[UIPickerView alloc] init];
     pickerView.showsSelectionIndicator = YES;
     pickerView.dataSource = self;
     pickerView.delegate = self;
+    
+    //If the text field is empty show the place holder otherwise show the last selected option
+    if (self->textField.text.length == 0)
+    {
+      self->textField.placeholder = self->placeholderWhileSelecting;
+    }
+    else
+    {
+      [self->pickerView selectRow:[self->dataArray indexOfObject:self->textField.text]  inComponent:0 animated:YES];
+    }
 
     UIToolbar* toolbar = [[UIToolbar alloc] init];
     toolbar.barStyle = self->toolbarStyle;
