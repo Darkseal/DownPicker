@@ -14,7 +14,7 @@
 
 
 @implementation DownPicker
-@synthesize text;
+// @synthesize text;
 
 -(id)initWithTextField:(UITextField *)tf
 {
@@ -72,8 +72,7 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    textField.text = [dataArray objectAtIndex:row];
-    text = textField.text;
+    self->textField.text = [dataArray objectAtIndex:row];
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
@@ -89,10 +88,12 @@
 -(void)doneClicked:(id) sender
 {
     [textField resignFirstResponder]; //hides the pickerView
-    if (self->textField.text.length == 0) {
-      textField.text = [dataArray objectAtIndex:0];
-      text = textField.text;
-    }
+    
+    // removed (empty string should be supported nonetheless)
+    // if (self->textField.text.length == 0) {
+    //     self->textField.text = [dataArray objectAtIndex:0];
+    // }
+    
     [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
@@ -110,8 +111,7 @@
     }
     else
     {
-      text = textField.text;
-      [self->pickerView selectRow:[self->dataArray indexOfObject:self->textField.text]  inComponent:0 animated:YES];
+      [self->pickerView selectRow:[self->dataArray indexOfObject:self->textField.text] inComponent:0 animated:YES];
     }
 
     UIToolbar* toolbar = [[UIToolbar alloc] init];
@@ -198,6 +198,11 @@
 -(UITextField*) getTextField
 {
     return self->textField;
+}
+
+//Getter method for self.text
+- (NSString*) text {
+    return self->textField.text;
 }
 
 @end

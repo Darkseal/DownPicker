@@ -22,7 +22,7 @@
 	UIBarStyle toolbarStyle;
 }
 
-@property (retain, nonatomic) NSString* text;
+@property (nonatomic, readonly) NSString* text;
 
 -(id)initWithTextField:(UITextField *)tf;
 -(id)initWithTextField:(UITextField *)tf withData:(NSMutableArray*) data;
