@@ -91,9 +91,9 @@
     [textField resignFirstResponder]; //hides the pickerView
     if (self->textField.text.length == 0) {
       textField.text = [dataArray objectAtIndex:0];
+      text = textField.text;
     }
     [self sendActionsForControlEvents:UIControlEventValueChanged];
-  
 }
 
 - (IBAction)showPicker:(id)sender
@@ -110,6 +110,7 @@
     }
     else
     {
+      text = textField.text;
       [self->pickerView selectRow:[self->dataArray indexOfObject:self->textField.text]  inComponent:0 animated:YES];
     }
 
