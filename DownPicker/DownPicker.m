@@ -135,8 +135,11 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)aTextField
 {
-    [self showPicker:aTextField];
-    return YES;
+    if ([self->dataArray count] > 0) {
+        [self showPicker:aTextField];
+        return YES;
+    }
+    return NO;
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
