@@ -44,12 +44,12 @@ Then switch to the .m file and add these lines to your controller's **viewDidApp
     NSMutableArray* bandArray = [[NSMutableArray alloc] init];
     
     // add some sample data
-    [fruitsArray addObject:@"Offsprings"];
-    [fruitsArray addObject:@"Radiohead"];
-    [fruitsArray addObject:@"Muse"];
-    [fruitsArray addObject:@"R.E.M."];
-    [fruitsArray addObject:@"The Killers"];
-    [fruitsArray addObject:@"Social Distortion"];
+    [bandArray addObject:@"Offsprings"];
+    [bandArray addObject:@"Radiohead"];
+    [bandArray addObject:@"Muse"];
+    [bandArray addObject:@"R.E.M."];
+    [bandArray addObject:@"The Killers"];
+    [bandArray addObject:@"Social Distortion"];
     
     // bind yourTextField to DownPicker
     self.downPicker = [[DownPicker alloc] initWithTextField:self.yourTextField withData:bandArray];
