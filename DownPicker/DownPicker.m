@@ -205,4 +205,8 @@
     return self->textField.text;
 }
 
+-(void) selectValueById:(NSInteger)valueId{
+    [self pickerView:nil didSelectRow:valueId inComponent:0];
+}
+
 @end
