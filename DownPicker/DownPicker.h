@@ -35,4 +35,5 @@
 -(void) showArrowImage:(BOOL)b;
 -(UIPickerView*) getPickerView;
 -(UITextField*) getTextField;
+-(void) selectValueById:(NSInteger)valueId;
 @end
