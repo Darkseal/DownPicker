@@ -200,6 +200,12 @@
     return self->textField;
 }
 
+-(void) setValueAtIndex:(NSInteger)index
+{
+    [self pickerView:nil didSelectRow:index inComponent:0];
+}
+
+
 //Getter method for self.text
 - (NSString*) text {
     return self->textField.text;
