@@ -23,7 +23,6 @@ DerivedData
 .bundle
 
 _Pods.xcodeproj
-Example/
 
 Carthage
 # We recommend against adding the Pods directory to your .gitignore. However

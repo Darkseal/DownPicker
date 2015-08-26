@@ -1,0 +1,25 @@
+{
+  "name": "DownPicker",
+  "version": "0.1.0",
+  "summary": "A short description of DownPicker.",
+  "description": "",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/DownPicker",
+  "license": "MIT",
+  "authors": {
+    "Ryan": "ryan@ryadel.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/DownPicker.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "resource_bundles": {
+    "DownPicker": [
+      "Pod/Assets/*.png"
+    ]
+  }
+}

@@ -35,8 +35,6 @@ DownPicker is available through [CocoaPods](http://cocoapods.org). To install it
 
 `pod "DownPicker"`
 
-Here are the CocoaPods relevant info:
-
 [![CI Status](http://img.shields.io/travis/Ryan/DownPicker.svg?style=flat)](https://travis-ci.org/Ryan/DownPicker)
 [![Version](https://img.shields.io/cocoapods/v/DownPicker.svg?style=flat)](http://cocoapods.org/pods/DownPicker)
 [![License](https://img.shields.io/cocoapods/l/DownPicker.svg?style=flat)](http://cocoapods.org/pods/DownPicker)
