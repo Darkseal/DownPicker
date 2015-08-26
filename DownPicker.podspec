@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = "DownPicker"
-  s.version          = "0.1.0"
-  s.summary          = "A short description of DownPicker."
+  s.version          = "0.1.23"
+  s.summary          = "Lightweight class library for creating drop down list controls for iOS."
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,24 +17,26 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
+DownPicker is an extremely light-weight class library for creating DropDownList / ComboBox controls for iOS that will behave like their HTML / Android counterparts.
+You'll only need a standard UITextField and few lines of code.
                        DESC
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/DownPicker"
+  s.homepage         = "https://github.com/Darkseal/DownPicker"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Ryan" => "ryan@ryadel.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/DownPicker.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => "https://github.com/Darkseal/DownPicker.git", :tag => s.version.to_s }
+  # s.social_media_url = 'https://twitter.com/v2Dark'
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
+  s.source_files = 'DownPicker/**/*.{h,m}'
   s.resource_bundles = {
-    'DownPicker' => ['Pod/Assets/*.png']
+    'DownPicker' => ['DownPicker/*.png']
   }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
+  s.public_header_files = 'DownPicker/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end
