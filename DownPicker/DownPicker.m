@@ -108,7 +108,9 @@
     }
     else
     {
-      [self->pickerView selectRow:[self->dataArray indexOfObject:self->textField.text] inComponent:0 animated:YES];
+        if ([self->dataArray indexOfObject:self->textField.text] != NSNotFound) {
+            [self->pickerView selectRow:[self->dataArray indexOfObject:self->textField.text] inComponent:0 animated:YES];
+        }
     }
 
     UIToolbar* toolbar = [[UIToolbar alloc] init];
