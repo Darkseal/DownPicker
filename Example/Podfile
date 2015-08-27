@@ -4,6 +4,6 @@ use_frameworks!
 
 target 'DownPicker_Tests', :exclusive => true do
   pod "DownPicker", :path => "../"
-
-  
 end
+
+link_with 'DownPicker', 'DownPicker_Tests'

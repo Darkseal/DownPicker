@@ -22,7 +22,8 @@
 	UIBarStyle toolbarStyle;
 }
 
-@property (nonatomic, readonly) NSString* text;
+@property (nonatomic) NSString* text;
+@property (nonatomic) NSInteger* selectedIndex;
 
 -(id)initWithTextField:(UITextField *)tf;
 -(id)initWithTextField:(UITextField *)tf withData:(NSMutableArray*) data;
@@ -35,5 +36,6 @@
 -(void) showArrowImage:(BOOL)b;
 -(UIPickerView*) getPickerView;
 -(UITextField*) getTextField;
+-(NSString*) getValueAtIndex:(NSInteger)index;
 -(void) setValueAtIndex:(NSInteger)index;
 @end

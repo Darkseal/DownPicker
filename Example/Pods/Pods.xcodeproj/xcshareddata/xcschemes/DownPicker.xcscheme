@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E15FB8BD1AD53DCEC30190AF"
+               BlueprintIdentifier = "ECB07B5AFE7B17CF6A20C936"
                BuildableName = "DownPicker.framework"
                BlueprintName = "DownPicker"
                ReferencedContainer = "container:Pods.xcodeproj">

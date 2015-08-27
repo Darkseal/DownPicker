@@ -1,5 +1,5 @@
 //
-//  DownPickerTests.m
+//  Tests.m
 //  DownPickerTests
 //
 //  Created by Ryan on 08/26/2015.
@@ -7,6 +7,7 @@
 //
 
 @import XCTest;
+@import DownPicker;
 
 @interface Tests : XCTestCase
 
@@ -26,9 +27,42 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)initAsWrapper
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    // create the array of data
+    NSMutableArray* bandArray = [[NSMutableArray alloc] init];
+    
+    // add some sample data
+    [bandArray addObject:@"Offsprings"];
+    [bandArray addObject:@"Radiohead"];
+    [bandArray addObject:@"Muse"];
+    [bandArray addObject:@"R.E.M."];
+    [bandArray addObject:@"The Killers"];
+    [bandArray addObject:@"Social Distortion"];
+    
+    UITextField *tf = [[UITextField alloc] init];
+    // bind yourTextField to DownPicker
+    DownPicker *dp = [[DownPicker alloc] initWithTextField:tf withData:bandArray];
+    XCTAssertNotNil(dp, @"Cannot find DownPicker instance");
+    // no teardown needed
+}
+
+- (void)initAsUIControl
+{
+    // create the array of data
+    NSMutableArray* bandArray = [[NSMutableArray alloc] init];
+    
+    // add some sample data
+    [bandArray addObject:@"Offsprings"];
+    [bandArray addObject:@"Radiohead"];
+    [bandArray addObject:@"Muse"];
+    [bandArray addObject:@"R.E.M."];
+    [bandArray addObject:@"The Killers"];
+    [bandArray addObject:@"Social Distortion"];
+    
+    UIDownPicker* dp = [[UIDownPicker alloc] initWithData:bandArray];
+    XCTAssertNotNil(dp, @"Cannot find UIDownPicker instance");
+    // no teardown needed
 }
 
 @end

@@ -16,4 +16,6 @@
 
 @property (strong, nonatomic) DownPicker *DownPicker;
 
+-(id)initWithData:(NSMutableArray*)data;
+
 @end

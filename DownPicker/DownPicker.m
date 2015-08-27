@@ -14,7 +14,9 @@
 
 
 @implementation DownPicker
-// @synthesize text;
+
+@synthesize text;
+@synthesize selectedIndex;
 
 -(id)initWithTextField:(UITextField *)tf
 {
@@ -88,7 +90,7 @@
 -(void)doneClicked:(id) sender
 {
     [textField resignFirstResponder]; //hides the pickerView
-    if (self->textField.text.length == 0) {
+    if (self->textField.text.length == 0 || ![self->dataArray containsObject:self->textField.text]) {
         self->textField.text = [dataArray objectAtIndex:0];
     }
     [self sendActionsForControlEvents:UIControlEventValueChanged];
@@ -104,11 +106,11 @@
     //If the text field is empty show the place holder otherwise show the last selected option
     if (self->textField.text.length == 0)
     {
-      self->textField.placeholder = self->placeholderWhileSelecting;
+        self->textField.placeholder = self->placeholderWhileSelecting;
     }
     else
     {
-        if ([self->dataArray indexOfObject:self->textField.text] != NSNotFound) {
+        if ([self->dataArray containsObject:self->textField.text]) {
             [self->pickerView selectRow:[self->dataArray indexOfObject:self->textField.text] inComponent:0 animated:YES];
         }
     }
@@ -202,15 +204,38 @@
     return self->textField;
 }
 
+-(NSString*) getValueAtIndex:(NSInteger)index
+{
+    return (self->dataArray.count > index) ? [self->dataArray objectAtIndex:index] : nil;
+}
+
 -(void) setValueAtIndex:(NSInteger)index
 {
     [self pickerView:nil didSelectRow:index inComponent:0];
 }
 
-
-//Getter method for self.text
 - (NSString*) text {
     return self->textField.text;
+}
+
+- (void) setText:(NSString*)txt {
+    if (txt != nil) {
+        NSInteger index = [self->dataArray indexOfObject:txt];
+        if (index != NSNotFound) [self setValueAtIndex:index];
+    }
+    else {
+        self->textField.text = txt;
+    }
+}
+
+- (NSInteger*)selectedIndex {
+    NSInteger index = [self->dataArray indexOfObject:self->textField.text];
+    return (index != NSNotFound) ? (NSInteger*)index : nil;
+}
+
+- (void)setSelectedIndex:(NSInteger*)index {
+    if (index != nil) [self setValueAtIndex:(NSInteger)index];
+    else [self setText:nil];
 }
 
 @end
