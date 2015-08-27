@@ -129,6 +129,16 @@ You can use `[UIImage imageNamed:@"yourCustomImage.png"]` to set any image in yo
 ... and more!
 
 
+## Useful Links
+- [DownPicker project page](http://darkseal.github.io/DownPicker/) on [GitHub](https://github.com)
+- [DownPicker main repository](https://github.com/Darkseal/DownPicker) on [GitHub](https://github.com)
+- [DownPicker pod page](http://cocoapods.org/pods/DownPicker) at [Ryadel.com](https:/cocoapods.org/)
+- [DownPicker project page](https://www.cocoacontrols.com/controls/downpicker) at [CocoaControls](https://www.cocoacontrols.com)
+- [DownPicker developer page](http://www.ryadel.com/works/downpicker/) at [Ryadel.com](https:/www.ryadel.com/)
+- [DownPicker installation guide](http://www.ryadel.com/downpicker-dropdownlist-combobox-ios-xcode-in-objective-c/) at [Ryadel.com](https:/www.ryadel.com/)
+- [Donation & support page](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=F576E73P5X526)
+
+
 ## Support
 
 You can support this project's development by clicking on the following button.
