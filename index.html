@@ -5,7 +5,7 @@
     <title>Downpicker by Darkseal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
@@ -43,25 +43,42 @@ You'll only need a standard <strong>UITextField</strong> and few lines of code.<
 <h2>
 <a id="how-does-it-work" class="anchor" href="#how-does-it-work" aria-hidden="true"><span class="octicon octicon-link"></span></a>How does it work</h2>
 
-<p>DownPicker is basically a <em>control interface wrapper</em>, meaning that you won't use it as a control - 
-it will use an existing UITextField control instead.
-This is a good thing, because you'll be able to design, positioning and skin your UITextField like you always do, 
-programmatically or inside a <em>Storyboard</em> UI, depending on how you are used to work. You won't change your style, as it will 
-adapt to suit yours.</p>
+<p>DownPicker is basically a <em>control interface wrapper</em>, meaning that you won't use it as a control - it will use an existing UITextField control instead.
+This is a good thing, because you'll be able to design, positioning and skin your UITextField like you always do, programmatically or inside a <em>Storyboard</em> UI, depending on how you are used to work. You won't change your style, as it will adapt to suit yours.</p>
 
 <p>However, if you don't like the <em>control wrapper</em> pattern, you can just use it as a <em>custom control</em> using the included <strong>UIDownPicker</strong> class. It's entirely up to you (and very easy to install in both scenarios).</p>
 
 <h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
+<h3>
+<a id="using-cocoapods" class="anchor" href="#using-cocoapods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using CocoaPods</h3>
+
+<p>DownPicker is available through <a href="http://cocoapods.org">CocoaPods</a>. To install it, simply add the following line to your Podfile:</p>
+
+<p><code>pod "DownPicker"</code></p>
+
+<p><a href="https://travis-ci.org/Ryan/DownPicker"><img src="http://img.shields.io/travis/Ryan/DownPicker.svg?style=flat" alt="CI Status"></a>
+<a href="http://cocoapods.org/pods/DownPicker"><img src="https://img.shields.io/cocoapods/v/DownPicker.svg?style=flat" alt="Version"></a>
+<a href="http://cocoapods.org/pods/DownPicker"><img src="https://img.shields.io/cocoapods/l/DownPicker.svg?style=flat" alt="License"></a>
+<a href="http://cocoapods.org/pods/DownPicker"><img src="https://img.shields.io/cocoapods/p/DownPicker.svg?style=flat" alt="Platform"></a></p>
+
+<h3>
+<a id="manual-installation" class="anchor" href="#manual-installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Manual Installation</h3>
+
 <p>Download the latest version from <a href="https://github.com/Darkseal/DownPicker/archive/master.zip">this link</a>, 
 then unzip &amp; drag-drop the /DownPicker/ folder inside your iOS project. You can do that directly within XCode,
 just be sure you have the <strong>copy items if needed</strong> and the <strong>create groups</strong> options checked.</p>
 
-<p>Once you did that, add (or choose) a <strong>UITextField</strong> you would like to transform to a DownPicker. You can use the Storyboard 
-designer tool or do it programmatically; you can also set up constraints, custom placement/coords, font, colors 
-and anything else you like. When you're done, open your controller's .h file and create a property 
-for the DownPicker wrapper:</p>
+<h2>
+<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to Use</h2>
+
+<p>Once you have DownPicker installed and included in your project, you can either use it as a Control Wrapper or as a Custom Control: the choice is up to you, depending on your programming style.</p>
+
+<h3>
+<a id="as-a-control-wrapper" class="anchor" href="#as-a-control-wrapper" aria-hidden="true"><span class="octicon octicon-link"></span></a>As a Control Wrapper</h3>
+
+<p>Add (or choose) a <strong>UITextField</strong> you would like to transform to a DownPicker. You can use the Storyboard designer tool or do it programmatically; you can also set up constraints, custom placement/coords, font, colors and anything else you like. When you're done, open your controller's .h file and create a property for the DownPicker wrapper:</p>
 
 <pre><code>#import "DownPicker.h";
 
@@ -74,12 +91,12 @@ for the DownPicker wrapper:</p>
 NSMutableArray* bandArray = [[NSMutableArray alloc] init];
 
 // add some sample data
-[fruitsArray addObject:@"Offsprings"];
-[fruitsArray addObject:@"Radiohead"];
-[fruitsArray addObject:@"Muse"];
-[fruitsArray addObject:@"R.E.M."];
-[fruitsArray addObject:@"The Killers"];
-[fruitsArray addObject:@"Social Distortion"];
+[bandArray addObject:@"Offsprings"];
+[bandArray addObject:@"Radiohead"];
+[bandArray addObject:@"Muse"];
+[bandArray addObject:@"R.E.M."];
+[bandArray addObject:@"The Killers"];
+[bandArray addObject:@"Social Distortion"];
 
 // bind yourTextField to DownPicker
 self.downPicker = [[DownPicker alloc] initWithTextField:self.yourTextField withData:bandArray];
@@ -88,7 +105,7 @@ self.downPicker = [[DownPicker alloc] initWithTextField:self.yourTextField withD
 <p>That's it. You can retrieve the user's choice at any time using <code>self.datePicker.text</code> or <code>textField.text</code>.</p>
 
 <h3>
-<a id="installing-as-a-custom-control" class="anchor" href="#installing-as-a-custom-control" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing as a Custom Control</h3>
+<a id="as-a-custom-control" class="anchor" href="#as-a-custom-control" aria-hidden="true"><span class="octicon octicon-link"></span></a>As a Custom Control</h3>
 
 <p>If you'd like to use DownPicker as a custom control instead, just instantiate the included <strong>UIDownPicker</strong> class programmatically and attach it to your view like any other legacy UI control:</p>
 
@@ -145,7 +162,6 @@ You can use <code>[UIImage imageNamed:@"yourCustomImage.png"]</code> to set any 
 <a id="upcoming-features" class="anchor" href="#upcoming-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Upcoming Features</h2>
 
 <ul>
-<li>CocoaPods installation (I'll work on it once I receive the first request).</li>
 <li>More customization options (give me your suggestions).</li>
 <li>Dynamic data-binding.
 ... and more!</li>
@@ -159,6 +175,16 @@ You can use <code>[UIImage imageNamed:@"yourCustomImage.png"]</code> to set any 
 <p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=F576E73P5X526"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" alt="Donate"></a></p>
 
 <p>Thanks a lot!</p>
+
+<h2>
+<a id="author" class="anchor" href="#author" aria-hidden="true"><span class="octicon octicon-link"></span></a>Author</h2>
+
+<p>Ryan, <a href="mailto:ryan@ryadel.com">ryan@ryadel.com</a></p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>DownPicker is available under the MIT license. See the LICENSE file for more info.</p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/Darkseal/DownPicker">Downpicker</a> is maintained by <a href="https://github.com/Darkseal">Darkseal</a>.</span>
@@ -181,4 +207,3 @@ You can use <code>[UIImage imageNamed:@"yourCustomImage.png"]</code> to set any 
 
   </body>
 </html>
-
