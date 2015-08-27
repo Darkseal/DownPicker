@@ -88,9 +88,10 @@
 -(void)doneClicked:(id) sender
 {
     [textField resignFirstResponder]; //hides the pickerView
-    if (self->textField.text.length == 0) {
+    if ((self->textField.text.length == 0) || ([self->dataArray indexOfObject:self->textField.text] == NSNotFound)) {
         self->textField.text = [dataArray objectAtIndex:0];
     }
+    
     [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
