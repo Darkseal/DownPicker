@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "DownPicker"
-  s.version          = "0.1.25"
+  s.version          = "0.1.27"
   s.summary          = "Lightweight class library for creating drop down list controls for iOS."
 
 # This description is used to generate tags and improve search results.
@@ -36,7 +36,7 @@ Installation instructions, examples and documentation are available in the inclu
   s.source           = { :git => "https://github.com/Darkseal/DownPicker.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/ryadel_com'
 
-  s.platform     = :ios, '7.0'
+  s.platform     = :ios, '6.0'
   s.requires_arc = true
 
   s.source_files = 'DownPicker/**/*.{h,m}'

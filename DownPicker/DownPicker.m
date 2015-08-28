@@ -47,13 +47,9 @@
         self->textField.placeholder = self->placeholder;
         
         // show the arrow image
-        self->textField.rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"downArrow.png"]];
+        self->textField.rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"downArrow"]];
         self->textField.rightView.contentMode = UIViewContentModeScaleAspectFit;
         self->textField.rightView.clipsToBounds = YES;
-        
-        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-        [self setArrowImage:[UIImage imageNamed:@"downArrow" inBundle:bundle compatibleWithTraitCollection:nil]];
-        [self showArrowImage:YES];
 
         // set the data array (if present)
         if (data != nil) {
