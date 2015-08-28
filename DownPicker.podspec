@@ -30,7 +30,7 @@ Installation instructions, examples and documentation are available in the inclu
                        DESC
 
   s.homepage         = "https://github.com/Darkseal/DownPicker"
-  s.screenshots     = "//raw.githubusercontent.com/Darkseal/DownPicker/gh-pages/images/DownPicker/UITextField.DownPicker.png"
+  s.screenshots     = "https://raw.githubusercontent.com/Darkseal/DownPicker/gh-pages/images/DownPicker/UITextField.DownPicker.png"
   s.license          = 'MIT'
   s.author           = { "Ryan" => "ryan@ryadel.com" }
   s.source           = { :git => "https://github.com/Darkseal/DownPicker.git", :tag => s.version.to_s }
