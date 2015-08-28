@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "DownPicker"
-  s.version          = "0.1.24"
+  s.version          = "0.1.25"
   s.summary          = "Lightweight class library for creating drop down list controls for iOS."
 
 # This description is used to generate tags and improve search results.
@@ -30,18 +30,18 @@ Installation instructions, examples and documentation are available in the inclu
                        DESC
 
   s.homepage         = "https://github.com/Darkseal/DownPicker"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.screenshots     = "//raw.githubusercontent.com/Darkseal/DownPicker/gh-pages/images/DownPicker/UITextField.DownPicker.png"
   s.license          = 'MIT'
   s.author           = { "Ryan" => "ryan@ryadel.com" }
   s.source           = { :git => "https://github.com/Darkseal/DownPicker.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/v2Dark'
+  s.social_media_url = 'https://twitter.com/ryadel_com'
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
 
   s.source_files = 'DownPicker/**/*.{h,m}'
   s.resource_bundles = {
-    'DownPicker' => ['DownPicker/*.png']
+    'DownPicker' => ['DownPicker/**/*.*']
   }
 
   s.public_header_files = 'DownPicker/**/*.h'

@@ -50,7 +50,9 @@
         self->textField.rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"downArrow.png"]];
         self->textField.rightView.contentMode = UIViewContentModeScaleAspectFit;
         self->textField.rightView.clipsToBounds = YES;
-        [self setArrowImage:[UIImage imageNamed:@"downArrow.png"]];
+        
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        [self setArrowImage:[UIImage imageNamed:@"downArrow" inBundle:bundle compatibleWithTraitCollection:nil]];
         [self showArrowImage:YES];
 
         // set the data array (if present)
