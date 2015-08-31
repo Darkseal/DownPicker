@@ -47,7 +47,9 @@
         self->textField.placeholder = self->placeholder;
         
         // show the arrow image
-        self->textField.rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"downArrow"]];
+        UIImage* img = [UIImage imageNamed:@"downArrow.png"];   // non-CocoaPods
+        if (img == nil) img = [UIImage imageNamed:@"DownPicker.bundle/downArrow.png"]; // CocoaPods
+        if (img != nil) self->textField.rightView = [[UIImageView alloc] initWithImage:img];
         self->textField.rightView.contentMode = UIViewContentModeScaleAspectFit;
         self->textField.rightView.clipsToBounds = YES;
 
