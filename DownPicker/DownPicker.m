@@ -18,9 +18,6 @@
     NSString* _previousSelectedString;
 }
 
-@synthesize text;
-@synthesize selectedIndex;
-
 -(id)initWithTextField:(UITextField *)tf
 {
     return [self initWithTextField:tf withData:nil];
@@ -50,12 +47,15 @@
         // set the placeholder
         self->textField.placeholder = self->placeholder;
         
-        // show the arrow image
+        // setup the arrow image
         UIImage* img = [UIImage imageNamed:@"downArrow.png"];   // non-CocoaPods
         if (img == nil) img = [UIImage imageNamed:@"DownPicker.bundle/downArrow.png"]; // CocoaPods
         if (img != nil) self->textField.rightView = [[UIImageView alloc] initWithImage:img];
         self->textField.rightView.contentMode = UIViewContentModeScaleAspectFit;
         self->textField.rightView.clipsToBounds = YES;
+        
+        // show the arrow image by default
+        [self showArrowImage:YES];
 
         // set the data array (if present)
         if (data != nil) {

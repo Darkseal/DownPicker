@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "DownPicker"
-  s.version          = "0.1.28"
+  s.version          = "0.1.29"
   s.summary          = "Lightweight class library for creating drop down list controls for iOS."
 
 # This description is used to generate tags and improve search results.
