@@ -19,6 +19,7 @@
     NSString* placeholder;
     NSString* placeholderWhileSelecting;
 	NSString* toolbarDoneButtonText;
+    NSString* toolbarCancelButtonText;
 	UIBarStyle toolbarStyle;
 }
 

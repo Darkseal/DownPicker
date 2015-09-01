@@ -14,6 +14,9 @@
 
 
 @implementation DownPicker
+{
+    NSString* _previousSelectedString;
+}
 
 @synthesize text;
 @synthesize selectedIndex;
@@ -37,6 +40,7 @@
         self->placeholder = @"Tap to choose...";
         self->placeholderWhileSelecting = @"Pick an option...";
 		self->toolbarDoneButtonText = @"Done";
+        self->toolbarCancelButtonText = @"Cancel";
         
         // hide the caret and its blinking
         [[textField valueForKey:@"textInputTraits"]
@@ -92,12 +96,24 @@
     [textField resignFirstResponder]; //hides the pickerView
     if (self->textField.text.length == 0 || ![self->dataArray containsObject:self->textField.text]) {
         self->textField.text = [dataArray objectAtIndex:0];
+    } else {
+        if (![self->textField.text isEqualToString:_previousSelectedString]) {
+            [self sendActionsForControlEvents:UIControlEventValueChanged];
+        }
     }
-    [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
+
+-(void)cancelClicked:(id)sender
+{
+    [textField resignFirstResponder]; //hides the pickerView
+    self->textField.text = @"";
+}
+
 
 - (IBAction)showPicker:(id)sender
 {
+    _previousSelectedString = self->textField.text;
+    
     pickerView = [[UIPickerView alloc] init];
     pickerView.showsSelectionIndicator = YES;
     pickerView.dataSource = self;
@@ -119,9 +135,16 @@
     toolbar.barStyle = self->toolbarStyle;
     [toolbar sizeToFit];
     
-    //to make the done button aligned to the right
-    UIBarButtonItem *flexibleSpaceLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem* cancelButton = [[UIBarButtonItem alloc]
+                                     initWithTitle:self->toolbarCancelButtonText
+                                     style:UIBarButtonItemStylePlain
+                                     target:self
+                                     action:@selector(cancelClicked:)];
     
+    //space between buttons
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                                   target:nil
+                                                                                   action:nil];
     
     UIBarButtonItem* doneButton = [[UIBarButtonItem alloc]
                                    initWithTitle:self->toolbarDoneButtonText
@@ -130,7 +153,8 @@
                                    action:@selector(doneClicked:)];
     
     
-    [toolbar setItems:[NSArray arrayWithObjects:flexibleSpaceLeft, doneButton, nil]];
+    
+    [toolbar setItems:[NSArray arrayWithObjects:cancelButton, flexibleSpace, doneButton, nil]];
 
     //custom input view
     textField.inputView = pickerView;
