@@ -14,6 +14,9 @@
 
 
 @implementation DownPicker
+{
+    NSString* _previousSelectedString;
+}
 
 @synthesize text;
 @synthesize selectedIndex;
@@ -93,8 +96,11 @@
     [textField resignFirstResponder]; //hides the pickerView
     if (self->textField.text.length == 0 || ![self->dataArray containsObject:self->textField.text]) {
         self->textField.text = [dataArray objectAtIndex:0];
+    } else {
+        if (![self->textField.text isEqualToString:_previousSelectedString]) {
+            [self sendActionsForControlEvents:UIControlEventValueChanged];
+        }
     }
-    [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
 -(void)cancelClicked:(id)sender
@@ -106,6 +112,8 @@
 
 - (IBAction)showPicker:(id)sender
 {
+    _previousSelectedString = self->textField.text;
+    
     pickerView = [[UIPickerView alloc] init];
     pickerView.showsSelectionIndicator = YES;
     pickerView.dataSource = self;
