@@ -112,7 +112,7 @@
     textField.userInteractionEnabled = YES;
     
     [textField resignFirstResponder]; //hides the pickerView
-    self->textField.text = @"";
+    self->textField.text = _previousSelectedString;
 }
 
 
