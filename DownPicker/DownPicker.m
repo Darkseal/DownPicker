@@ -29,7 +29,7 @@
     if (self) {
         self->textField = tf;
         self->textField.delegate = self;
-        
+       
         // set UI defaults
         self->toolbarStyle = UIBarStyleDefault;
 		
@@ -93,6 +93,9 @@
 
 -(void)doneClicked:(id) sender
 {
+    // make the textField selectable again
+    textField.userInteractionEnabled = YES;
+    
     [textField resignFirstResponder]; //hides the pickerView
     if (self->textField.text.length == 0 || ![self->dataArray containsObject:self->textField.text]) {
         self->textField.text = [dataArray objectAtIndex:0];
@@ -105,6 +108,9 @@
 
 -(void)cancelClicked:(id)sender
 {
+    // make the textField selectable again
+    textField.userInteractionEnabled = YES;
+    
     [textField resignFirstResponder]; //hides the pickerView
     self->textField.text = @"";
 }
@@ -163,6 +169,9 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)aTextField
 {
+    // make the textField unselectable
+    textField.userInteractionEnabled = NO;
+    
     if ([self->dataArray count] > 0) {
         [self showPicker:aTextField];
         return YES;
@@ -175,7 +184,6 @@
     return NO;
 }
 
-// Utility Methods
 -(void) setData:(NSMutableArray*) data
 {
     dataArray = data;
@@ -213,6 +221,11 @@
     self->toolbarDoneButtonText = str;
 }
 
+-(void) setToolbarCancelButtonText:(NSString*)str
+{
+    self->toolbarCancelButtonText = str;
+}
+
 -(void) setToolbarStyle:(UIBarStyle)style;
 {
     self->toolbarStyle = style;
@@ -235,13 +248,24 @@
 
 -(void) setValueAtIndex:(NSInteger)index
 {
-    [self pickerView:nil didSelectRow:index inComponent:0];
+    if (index >= 0) [self pickerView:nil didSelectRow:index inComponent:0];
+    else [self setText:nil];
 }
 
+/**
+ Getter for text property.
+ @return
+ The value of the selected item or NIL NIL if nothing has been selected yet.
+ */
 - (NSString*) text {
     return self->textField.text;
 }
 
+/**
+ Setter for text property.
+ @param txt
+ The value of the item to select or NIL to clear selection.
+ */
 - (void) setText:(NSString*)txt {
     if (txt != nil) {
         NSInteger index = [self->dataArray indexOfObject:txt];
@@ -252,14 +276,23 @@
     }
 }
 
-- (NSInteger*)selectedIndex {
+/**
+ Getter for selectedIndex property.
+ @return
+ The zero-based index of the selected item or -1 if nothing has been selected yet.
+ */
+- (NSInteger)selectedIndex {
     NSInteger index = [self->dataArray indexOfObject:self->textField.text];
-    return (index != NSNotFound) ? (NSInteger*)index : nil;
+    return (index != NSNotFound) ? (NSInteger)index : -1;
 }
 
-- (void)setSelectedIndex:(NSInteger*)index {
-    if (index != nil) [self setValueAtIndex:(NSInteger)index];
-    else [self setText:nil];
+/**
+ Setter for selectedIndex property.
+ @param index
+ Sets the zero-based index of the selected item using the setValueAtIndex method: -1 can be used to clear selection.
+ */
+- (void)setSelectedIndex:(NSInteger)index {
+    [self setValueAtIndex:(NSInteger)index];
 }
 
 @end
