@@ -128,7 +128,9 @@
     //If the text field is empty show the place holder otherwise show the last selected option
     if (self->textField.text.length == 0)
     {
-        self->textField.placeholder = self->placeholderWhileSelecting;
+        if (self->placeholderWhileSelecting) {
+            self->textField.placeholder = self->placeholderWhileSelecting;
+        }
     }
     else
     {
