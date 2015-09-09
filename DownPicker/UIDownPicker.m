@@ -15,7 +15,7 @@
     return [self initWithData:nil];
 }
 
--(id)initWithData:(NSMutableArray*)data
+-(id)initWithData:(NSArray*)data
 {
     self = [super init];
     if (self) {
