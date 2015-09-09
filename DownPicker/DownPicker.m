@@ -211,6 +211,11 @@
     self->textField.placeholder = self->placeholder;
 }
 
+-(void) setAttributedPlaceholder:(NSAttributedString *)attributedString
+{
+    self->textField.attributedPlaceholder = attributedString;
+}
+
 -(void) setPlaceholderWhileSelecting:(NSString*)str
 {
     self->placeholderWhileSelecting = str;
