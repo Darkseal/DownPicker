@@ -23,7 +23,7 @@
     return [self initWithTextField:tf withData:nil];
 }
 
--(id)initWithTextField:(UITextField *)tf withData:(NSMutableArray*) data
+-(id)initWithTextField:(UITextField *)tf withData:(NSArray*) data
 {
     self = [super init];
     if (self) {
@@ -184,7 +184,7 @@
     return NO;
 }
 
--(void) setData:(NSMutableArray*) data
+-(void) setData:(NSArray*) data
 {
     dataArray = data;
 }
