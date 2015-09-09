@@ -15,7 +15,7 @@
 {
     UIPickerView* pickerView;
     IBOutlet UITextField* textField;
-    NSMutableArray* dataArray;
+    NSArray* dataArray;
     NSString* placeholder;
     NSString* placeholderWhileSelecting;
 	NSString* toolbarDoneButtonText;
@@ -27,7 +27,7 @@
 @property (nonatomic) NSInteger selectedIndex;
 
 -(id)initWithTextField:(UITextField *)tf;
--(id)initWithTextField:(UITextField *)tf withData:(NSMutableArray*) data;
+-(id)initWithTextField:(UITextField *)tf withData:(NSArray*) data;
 
 /**
  Sets an alternative image to be show to the right part of the textbox (assuming that showArrowImage is set to TRUE).
@@ -36,7 +36,7 @@
  */
 -(void) setArrowImage:(UIImage*)image;
 
--(void) setData:(NSMutableArray*) data;
+-(void) setData:(NSArray*) data;
 -(void) setPlaceholder:(NSString*)str;
 -(void) setPlaceholderWhileSelecting:(NSString*)str;
 -(void) setToolbarDoneButtonText:(NSString*)str;
