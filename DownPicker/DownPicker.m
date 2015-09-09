@@ -99,6 +99,7 @@
     [textField resignFirstResponder]; //hides the pickerView
     if (self->textField.text.length == 0 || ![self->dataArray containsObject:self->textField.text]) {
         self->textField.text = [dataArray objectAtIndex:0];
+        [self sendActionsForControlEvents:UIControlEventValueChanged];
     } else {
         if (![self->textField.text isEqualToString:_previousSelectedString]) {
             [self sendActionsForControlEvents:UIControlEventValueChanged];
