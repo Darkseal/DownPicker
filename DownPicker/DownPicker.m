@@ -183,7 +183,7 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)aTextField {
-    [self doneClicked:aTextField];
+    aTextField.userInteractionEnabled = YES;
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
