@@ -100,11 +100,15 @@
         // self->textField.text = [dataArray objectAtIndex:0];
         [self setValueAtIndex:-1];
         self->textField.placeholder = self->placeholder;
-    } else {
+    }
+    /*
+    else {
         if (![self->textField.text isEqualToString:_previousSelectedString]) {
             [self sendActionsForControlEvents:UIControlEventValueChanged];
         }
     }
+    */
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
 -(void)cancelClicked:(id)sender
@@ -129,7 +133,9 @@
     //If the text field is empty show the place holder otherwise show the last selected option
     if (self->textField.text.length == 0 || ![self->dataArray containsObject:self->textField.text])
     {
-        self->textField.placeholder = self->placeholderWhileSelecting;
+        if (self->placeholderWhileSelecting) {
+            self->textField.placeholder = self->placeholderWhileSelecting;
+        }
         // 0.1.31 patch: auto-select first item: it basically makes placeholderWhileSelecting useless, but
         // it solves the "first item cannot be selected" bug due to how the pickerView works.
         [self setSelectedIndex:0];
@@ -180,6 +186,11 @@
     return NO;
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)aTextField {
+    // [self doneClicked:aTextField];
+    aTextField.userInteractionEnabled = YES;
+}
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     return NO;
@@ -215,6 +226,11 @@
 -(void) setPlaceholderWhileSelecting:(NSString*)str
 {
     self->placeholderWhileSelecting = str;
+}
+
+-(void) setAttributedPlaceholder:(NSAttributedString *)attributedString
+{
+    self->textField.attributedPlaceholder = attributedString;
 }
 
 -(void) setToolbarDoneButtonText:(NSString*)str

@@ -39,6 +39,7 @@
 -(void) setData:(NSArray*) data;
 -(void) setPlaceholder:(NSString*)str;
 -(void) setPlaceholderWhileSelecting:(NSString*)str;
+-(void) setAttributedPlaceholder:(NSAttributedString *)attributedString;
 -(void) setToolbarDoneButtonText:(NSString*)str;
 -(void) setToolbarCancelButtonText:(NSString*)str;
 -(void) setToolbarStyle:(UIBarStyle)style;
