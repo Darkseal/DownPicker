@@ -23,7 +23,7 @@
     return [self initWithTextField:tf withData:nil];
 }
 
--(id)initWithTextField:(UITextField *)tf withData:(NSMutableArray*) data
+-(id)initWithTextField:(UITextField *)tf withData:(NSArray*) data
 {
     self = [super init];
     if (self) {
@@ -99,6 +99,7 @@
     [textField resignFirstResponder]; //hides the pickerView
     if (self->textField.text.length == 0 || ![self->dataArray containsObject:self->textField.text]) {
         self->textField.text = [dataArray objectAtIndex:0];
+        [self sendActionsForControlEvents:UIControlEventValueChanged];
     } else {
         if (![self->textField.text isEqualToString:_previousSelectedString]) {
             [self sendActionsForControlEvents:UIControlEventValueChanged];
@@ -128,7 +129,9 @@
     //If the text field is empty show the place holder otherwise show the last selected option
     if (self->textField.text.length == 0)
     {
-        self->textField.placeholder = self->placeholderWhileSelecting;
+        if (self->placeholderWhileSelecting) {
+            self->textField.placeholder = self->placeholderWhileSelecting;
+        }
     }
     else
     {
@@ -179,12 +182,16 @@
     return NO;
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)aTextField {
+    aTextField.userInteractionEnabled = YES;
+}
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     return NO;
 }
 
--(void) setData:(NSMutableArray*) data
+-(void) setData:(NSArray*) data
 {
     dataArray = data;
 }
@@ -209,6 +216,11 @@
 {
     self->placeholder = str;
     self->textField.placeholder = self->placeholder;
+}
+
+-(void) setAttributedPlaceholder:(NSAttributedString *)attributedString
+{
+    self->textField.attributedPlaceholder = attributedString;
 }
 
 -(void) setPlaceholderWhileSelecting:(NSString*)str
