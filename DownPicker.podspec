@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "DownPicker"
-  s.version          = "0.1.30"
+  s.version          = "0.1.31"
   s.summary          = "Lightweight class library for creating drop down list controls for iOS."
 
 # This description is used to generate tags and improve search results.
@@ -39,12 +39,12 @@ Installation instructions, examples and documentation are available in the inclu
   s.platform     = :ios, '6.0'
   s.requires_arc = true
 
-  s.source_files = 'DownPicker/**/*.{h,m}'
+  s.source_files = 'Pod/Classes/*.{h,m}'
   s.resource_bundles = {
-    'DownPicker' => ['DownPicker/**/*.png']
+    'DownPicker' => ['Pod/Assets/*.png']
   }
 
-  s.public_header_files = 'DownPicker/**/*.h'
+  s.public_header_files = '/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end
