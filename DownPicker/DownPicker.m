@@ -182,6 +182,10 @@
     return NO;
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)aTextField {
+    [self doneClicked:aTextField];
+}
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     return NO;
