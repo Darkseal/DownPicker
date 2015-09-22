@@ -61,6 +61,8 @@
         if (data != nil) {
             [self setData: data];
         }
+        
+        self.shouldDisplayCancelButton = YES;
     }
     return self;
 }
@@ -151,12 +153,6 @@
     toolbar.barStyle = self->toolbarStyle;
     [toolbar sizeToFit];
     
-    UIBarButtonItem* cancelButton = [[UIBarButtonItem alloc]
-                                     initWithTitle:self->toolbarCancelButtonText
-                                     style:UIBarButtonItemStylePlain
-                                     target:self
-                                     action:@selector(cancelClicked:)];
-    
     //space between buttons
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                    target:nil
@@ -168,9 +164,18 @@
                                    target:self
                                    action:@selector(doneClicked:)];
     
-    
-    
-    [toolbar setItems:[NSArray arrayWithObjects:cancelButton, flexibleSpace, doneButton, nil]];
+    if (self.shouldDisplayCancelButton) {
+        UIBarButtonItem* cancelButton = [[UIBarButtonItem alloc]
+                                         initWithTitle:self->toolbarCancelButtonText
+                                         style:UIBarButtonItemStylePlain
+                                         target:self
+                                         action:@selector(cancelClicked:)];
+        
+        [toolbar setItems:[NSArray arrayWithObjects:cancelButton, flexibleSpace, doneButton, nil]];
+    } else {
+        [toolbar setItems:[NSArray arrayWithObjects:flexibleSpace, doneButton, nil]];
+    }
+
 
     //custom input view
     textField.inputView = pickerView;

@@ -29,6 +29,8 @@
 -(id)initWithTextField:(UITextField *)tf;
 -(id)initWithTextField:(UITextField *)tf withData:(NSArray*) data;
 
+@property (nonatomic) BOOL shouldDisplayCancelButton;
+
 /**
  Sets an alternative image to be show to the right part of the textbox (assuming that showArrowImage is set to TRUE).
  @param image
