@@ -120,7 +120,7 @@ You can use `[UIImage imageNamed:@"yourCustomImage.png"]` to set any image in yo
 - configure (and/or localize) the placeholder text string using the `[self.downPicker setPlaceholder:NSString*]` and `[self.downPicker setPlaceholderWhileSelecting:NSString]` methods.
 - retrieve, customize and hook on the inner **UIPickerView** control using the `[self.downPicker getPickerView]` method (use at your own risk).
 - retrieve, customize and hook on the inner **UITextField** control using the `[self.downPicker getTextField]` method (use at your own risk). Remember that it's the exact same control you passed, so you might prefer to use your main reference instead.
-
+- the cancel button can be removed if the boolean flag property `shouldDisplayCancelButton` is set to `NO` after DownPicker is instantiated
 
 ## Upcoming Features
 
