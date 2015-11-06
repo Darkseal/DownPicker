@@ -197,7 +197,7 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)aTextField {
-    // [self doneClicked:aTextField];
+    [self doneClicked:aTextField];
     aTextField.userInteractionEnabled = YES;
     [self sendActionsForControlEvents:UIControlEventEditingDidEnd];
 }

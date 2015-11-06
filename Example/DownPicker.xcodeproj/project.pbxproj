@@ -21,8 +21,8 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		B81C30801E3E23D3B0FCFB8B /* Pods_DownPicker_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFD38B44898373D54B724BC /* Pods_DownPicker_Example.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		D2B5134B619EF5195D488787 /* Pods_DownPicker_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 364DB25569FF9082DF7A304A /* Pods_DownPicker_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		B81C30801E3E23D3B0FCFB8B /* Pods_DownPicker_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFD38B44898373D54B724BC /* Pods_DownPicker_Example.framework */; };
+		D2B5134B619EF5195D488787 /* Pods_DownPicker_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 364DB25569FF9082DF7A304A /* Pods_DownPicker_Tests.framework */; };
 		F2CD24831BA1F6AA0054CC54 /* DownPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2CD24821BA1F6AA0054CC54 /* DownPicker.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
