@@ -1,14 +1,14 @@
 PODS:
-  - DownPicker (0.1.31)
+  - DownPicker (0.1.34)
 
 DEPENDENCIES:
   - DownPicker (from `../`)
 
 EXTERNAL SOURCES:
   DownPicker:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  DownPicker: d8e4ad820dbb8f424025202865ee8fba590b1092
+  DownPicker: c00ea63f08ae82116cc93d0eba74e86bf3d4c68e
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0
