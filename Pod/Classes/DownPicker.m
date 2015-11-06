@@ -191,9 +191,15 @@
     return NO;
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self sendActionsForControlEvents:UIControlEventEditingDidBegin];
+}
+
 - (void)textFieldDidEndEditing:(UITextField *)aTextField {
     // [self doneClicked:aTextField];
     aTextField.userInteractionEnabled = YES;
+    [self sendActionsForControlEvents:UIControlEventEditingDidEnd];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
