@@ -43,7 +43,7 @@ DownPicker is available through [CocoaPods](http://cocoapods.org). To install it
 ### Manual Installation
 
 Download the latest version from [this link](https://github.com/Darkseal/DownPicker/archive/master.zip), 
-then unzip & drag-drop the /DownPicker/ folder inside your iOS project. You can do that directly within XCode,
+then unzip & drag-drop the /DownPicker/ folder inside your iOS project. You can do that directly within Xcode,
 just be sure you have the **copy items if needed** and the **create groups** options checked.
 
 
