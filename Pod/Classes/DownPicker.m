@@ -276,8 +276,11 @@
 
 -(void) setValueAtIndex:(NSInteger)index
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
     if (index >= 0) [self pickerView:nil didSelectRow:index inComponent:0];
     else [self setText:nil];
+#pragma clang diagnostic pop
 }
 
 /**
