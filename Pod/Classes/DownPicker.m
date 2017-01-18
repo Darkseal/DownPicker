@@ -16,6 +16,7 @@
 @implementation DownPicker
 {
     NSString* _previousSelectedString;
+    NSInteger _selectedRow;
 }
 
 -(id)initWithTextField:(UITextField *)tf
@@ -63,6 +64,8 @@
         }
         
         self.shouldDisplayCancelButton = YES;
+        self.updateTextFieldValueOnlyWhenDonePressed = NO;
+        _selectedRow = -1;
     }
     return self;
 }
@@ -80,7 +83,10 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    self->textField.text = [dataArray objectAtIndex:row];
+    _selectedRow = row;
+    if (!self.updateTextFieldValueOnlyWhenDonePressed) {
+        self->textField.text = [dataArray objectAtIndex:row];
+    }
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
@@ -97,6 +103,10 @@
 {
     //hides the pickerView
     [textField resignFirstResponder];
+    
+    if (self.updateTextFieldValueOnlyWhenDonePressed) {
+        self->textField.text = [dataArray objectAtIndex:_selectedRow];
+    }
     
     if (self->textField.text.length == 0 || ![self->dataArray containsObject:self->textField.text]) {
         // self->textField.text = [dataArray objectAtIndex:0];

@@ -80,6 +80,8 @@ That's it. You can retrieve the user's choice at any time using `self.datePicker
 ### As a Custom Control
 If you'd like to use DownPicker as a custom control instead, just instantiate the included **UIDownPicker** class programmatically and attach it to your view like any other legacy UI control:
 
+    #import "UIDownPicker.h";
+
     @interface YourViewController () {
         UIDownPicker *_dp;
     }
@@ -89,7 +91,7 @@ If you'd like to use DownPicker as a custom control instead, just instantiate th
     - (void)viewDidLoad
     {
         [super viewDidLoad];
-        self._dp = [[UIDownPicker] initWithData:yourMutableArray];
+        self._dp = [[UIDownPicker alloc] initWithData:yourMutableArray];
         [self.view addSubview:self._dp]; 
     }
     
@@ -121,6 +123,7 @@ You can use `[UIImage imageNamed:@"yourCustomImage.png"]` to set any image in yo
 - retrieve, customize and hook on the inner **UIPickerView** control using the `[self.downPicker getPickerView]` method (use at your own risk).
 - retrieve, customize and hook on the inner **UITextField** control using the `[self.downPicker getTextField]` method (use at your own risk). Remember that it's the exact same control you passed, so you might prefer to use your main reference instead.
 - the cancel button can be removed if the boolean flag property `shouldDisplayCancelButton` is set to `NO` after DownPicker is instantiated
+- the textField is updated with the value of the current scroll position only when the `Done` button is pressed if the boolean flag property `updateTextFieldValueOnlyWhenDonePressed` is set to `YES` after DownPicker is instantiated
 
 ## Upcoming Features
 
