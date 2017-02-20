@@ -11,6 +11,9 @@
 
 #import <UIKit/UIKit.h>
 
+FOUNDATION_EXPORT double DownPickerVersionNumber;
+FOUNDATION_EXPORT const unsigned char DownPickerVersionString[];
+
 @interface DownPicker : UIControl<UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 {
     UIPickerView* pickerView;
