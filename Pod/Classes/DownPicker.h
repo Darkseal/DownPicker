@@ -11,17 +11,26 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol DownPickerDataSource;
+@protocol DownPickerDelegate;
+
 @interface DownPicker : UIControl<UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 {
     UIPickerView* pickerView;
     IBOutlet UITextField* textField;
-    NSArray* dataArray;
+    NSMutableArray* dataArray;
     NSString* placeholder;
     NSString* placeholderWhileSelecting;
 	NSString* toolbarDoneButtonText;
     NSString* toolbarCancelButtonText;
 	UIBarStyle toolbarStyle;
 }
+
+@property (strong, nonatomic) id<DownPickerDelegate> delegate;
+@property (strong, nonatomic) id<DownPickerDataSource> dataSource;
+
+- (instancetype) initWithTextField: (UITextField *) uiTextField AndDataSource: (id<DownPickerDataSource>) dataSource;
+- (void) reloadData;
 
 @property (nonatomic) NSString* text;
 @property (nonatomic) NSInteger selectedIndex;
@@ -69,4 +78,20 @@
  The value at the given index or NIL if nothing has been selected yet.
  */
 -(void) setValueAtIndex:(NSInteger)index;
+@end
+
+@protocol DownPickerDataSource <NSObject>
+
+- (NSInteger) numberOfItemsForDownPicker: (DownPicker *) picker;
+- (NSString *) downPicker: (DownPicker *) picker textForIndex: (NSInteger) index;
+
+@end
+
+@protocol DownPickerDelegate <NSObject>
+
+@optional
+- (void) downPicker: (DownPicker *) picker didSelectItemAtIndex: (NSInteger) index;
+- (void) downPicker: (DownPicker *) picker didPickedItemAtIndex: (NSInteger) index;
+- (void) downPickerDidCancelSelection: (DownPicker *) picker;
+
 @end
