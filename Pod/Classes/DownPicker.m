@@ -82,6 +82,11 @@
 {
     self->textField.text = [dataArray objectAtIndex:row];
     [self sendActionsForControlEvents:UIControlEventValueChanged];
+    
+    if ([self.delegate respondsToSelector:@selector(downPicker:didSelectItemAtIndex:)])
+    {
+        [self.delegate downPicker:self didSelectItemAtIndex:row];
+    }
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
@@ -112,6 +117,11 @@
     }
     */
     [self sendActionsForControlEvents:UIControlEventValueChanged];
+    
+    if ([self.delegate respondsToSelector:@selector(downPicker:didPickedItemAtIndex:)])
+    {
+        [self.delegate downPicker:self didPickedItemAtIndex:[self selectedIndex]];
+    }
 }
 
 -(void)cancelClicked:(id)sender
@@ -121,6 +131,11 @@
         self->textField.placeholder = self->placeholder;
     }
     self->textField.text = _previousSelectedString;
+    
+    if ([self.delegate respondsToSelector:@selector(downPickerDidCancelSelection:)])
+    {
+        [self.delegate downPickerDidCancelSelection:self];
+    }
 }
 
 
@@ -208,7 +223,7 @@
     return NO;
 }
 
--(void) setData:(NSArray*) data
+-(void) setData:(NSMutableArray *) data
 {
     dataArray = data;
 }
@@ -322,6 +337,50 @@
  */
 - (void)setSelectedIndex:(NSInteger)index {
     [self setValueAtIndex:(NSInteger)index];
+}
+
+- (instancetype) initWithTextField: (UITextField *) uiTextField AndDataSource: (id<DownPickerDataSource>) dataSource
+{
+    self = [self initWithTextField:uiTextField];
+    if (self)
+    {
+        self.dataSource = dataSource;
+        if ([self.dataSource respondsToSelector:@selector(numberOfItemsForDownPicker:)] && [self.dataSource respondsToSelector:@selector(downPicker:textForIndex:)])
+        {
+            NSInteger numberOfItems = [self.dataSource numberOfItemsForDownPicker:self];
+            dataArray = [[NSMutableArray alloc] init];
+            for (int i = 0; i < (int) numberOfItems; i++)
+            {
+                [dataArray addObject:[self.dataSource downPicker:self textForIndex:i]];
+            }
+        }
+        else
+        {
+            NSException *invalidArgumentException = [NSException exceptionWithName:NSInvalidArgumentException reason:@"Data Source must implement numberOfItems and textForIndex methods." userInfo:nil];
+            [invalidArgumentException raise];
+        }
+    }
+    return self;
+}
+
+- (void) reloadData
+{
+    if ([self.dataSource respondsToSelector:@selector(numberOfItemsForDownPicker:)] && [self.dataSource respondsToSelector:@selector(downPicker:textForIndex:)])
+    {
+        NSInteger numberOfItems = [self.dataSource numberOfItemsForDownPicker:self];
+        if (!dataArray)
+            dataArray = [[NSMutableArray alloc] init];
+        [dataArray removeAllObjects];
+        for (int i = 0; i < (int) numberOfItems; i++)
+        {
+            [dataArray addObject:[self.dataSource downPicker:self textForIndex:i]];
+        }
+    }
+    else
+    {
+        NSException *invalidArgumentException = [NSException exceptionWithName:NSInvalidArgumentException reason:@"Data Source must implement numberOfItems and textForIndex methods." userInfo:nil];
+        [invalidArgumentException raise];
+    }
 }
 
 @end
