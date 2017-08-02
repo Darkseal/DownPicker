@@ -73,8 +73,6 @@
 
 /**
  Sets the zero-based index of the selected item: -1 can be used to clear selection.
- @return
- The value at the given index or NIL if nothing has been selected yet.
  */
 -(void) setValueAtIndex:(NSInteger)index;
 @end
