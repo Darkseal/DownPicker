@@ -67,6 +67,52 @@
     return self;
 }
 
+- (instancetype) initWithTextField: (UITextField *) uiTextField AndDataSource: (id<DownPickerDataSource>) dataSource
+{
+    self = [self initWithTextField:uiTextField];
+    if (self)
+    {
+        self.dataSource = dataSource;
+        if ([self.dataSource respondsToSelector:@selector(numberOfItemsForDownPicker:)] && [self.dataSource respondsToSelector:@selector(downPicker:textForIndex:)])
+        {
+            NSInteger numberOfItems = [self.dataSource numberOfItemsForDownPicker:self];
+            if (!dataArray)
+                dataArray = [[NSMutableArray alloc] init];
+            [dataArray removeAllObjects];
+            for (int i = 0; i < (int) numberOfItems; i++)
+            {
+                [dataArray addObject:[self.dataSource downPicker:self textForIndex:i]];
+            }
+        }
+        else
+        {
+            NSException *invalidArgumentException = [NSException exceptionWithName:NSInvalidArgumentException reason:@"Data Source must implement numberOfItems and textForIndex methods." userInfo:nil];
+            [invalidArgumentException raise];
+        }
+    }
+    return self;
+}
+
+- (void) reloadData
+{
+    if ([self.dataSource respondsToSelector:@selector(numberOfItemsForDownPicker:)] && [self.dataSource respondsToSelector:@selector(downPicker:textForIndex:)])
+    {
+        NSInteger numberOfItems = [self.dataSource numberOfItemsForDownPicker:self];
+        if (!dataArray)
+            dataArray = [[NSMutableArray alloc] init];
+        [dataArray removeAllObjects];
+        for (int i = 0; i < (int) numberOfItems; i++)
+        {
+            [dataArray addObject:[self.dataSource downPicker:self textForIndex:i]];
+        }
+    }
+    else
+    {
+        NSException *invalidArgumentException = [NSException exceptionWithName:NSInvalidArgumentException reason:@"Data Source must implement numberOfItems and textForIndex methods." userInfo:nil];
+        [invalidArgumentException raise];
+    }
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -82,6 +128,11 @@
 {
     self->textField.text = [dataArray objectAtIndex:row];
     [self sendActionsForControlEvents:UIControlEventValueChanged];
+    
+    if ([self.delegate respondsToSelector:@selector(downPicker:didSelectItemAtIndex:)])
+    {
+        [self.delegate downPicker:self didSelectItemAtIndex:row];
+    }
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
@@ -112,6 +163,11 @@
     }
     */
     [self sendActionsForControlEvents:UIControlEventValueChanged];
+    
+    if ([self.delegate respondsToSelector:@selector(downPicker:didPickedItemAtIndex:)])
+    {
+        [self.delegate downPicker:self didPickedItemAtIndex:[self selectedIndex]];
+    }
 }
 
 -(void)cancelClicked:(id)sender
@@ -121,6 +177,11 @@
         self->textField.placeholder = self->placeholder;
     }
     self->textField.text = _previousSelectedString;
+    
+    if ([self.delegate respondsToSelector:@selector(downPickerDidCancelSelection:)])
+    {
+        [self.delegate downPickerDidCancelSelection:self];
+    }
 }
 
 
@@ -197,7 +258,8 @@
     [self sendActionsForControlEvents:UIControlEventEditingDidBegin];
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)aTextField {
+- (void) textFieldDidEndEditing: (UITextField *) aTextField
+{
     // [self doneClicked:aTextField];
     aTextField.userInteractionEnabled = YES;
     [self sendActionsForControlEvents:UIControlEventEditingDidEnd];
@@ -208,18 +270,19 @@
     return NO;
 }
 
--(void) setData:(NSArray*) data
+-(void) setData: (NSMutableArray *) data
 {
     dataArray = data;
 }
 
--(void) showArrowImage:(BOOL)b
+-(void) showArrowImage: (BOOL) showArrow
 {
-    if (b == YES) {
-      // set the DownPicker arrow to the right (you can replace it with any 32x24 px transparent image: changing size might give different results)
+    if (showArrow == YES)
+    {
         self->textField.rightViewMode = UITextFieldViewModeAlways;
     }
-    else {
+    else
+    {
         self->textField.rightViewMode = UITextFieldViewModeNever;
     }
 }
@@ -277,7 +340,10 @@
 
 -(void) setValueAtIndex:(NSInteger)index
 {
-    if (index >= 0) [self pickerView:nil didSelectRow:index inComponent:0];
+    if (pickerView && index >= 0)
+    {
+        [self pickerView:pickerView didSelectRow:index inComponent:0];
+    }
     else [self setText:nil];
 }
 
