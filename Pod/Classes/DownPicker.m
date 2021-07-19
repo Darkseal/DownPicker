@@ -171,7 +171,7 @@
                                          style:UIBarButtonItemStylePlain
                                          target:self
                                          action:@selector(cancelClicked:)];
-        
+
         [toolbar setItems:[NSArray arrayWithObjects:cancelButton, flexibleSpace, doneButton, nil]];
     } else {
         [toolbar setItems:[NSArray arrayWithObjects:flexibleSpace, doneButton, nil]];
