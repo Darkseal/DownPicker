@@ -30,13 +30,17 @@
         self->textField = tf;
         self->textField.delegate = self;
        
+        if ([[UIDevice currentDevice].systemVersion floatValue] >= 9.0) {
+            self->textField.inputAssistantItem.leadingBarButtonGroups = @[];
+            self->textField.inputAssistantItem.trailingBarButtonGroups = @[];
+        }
         // set UI defaults
         self->toolbarStyle = UIBarStyleDefault;
-		
+        
         // set language defaults
         self->placeholder = @"Tap to choose...";
         self->placeholderWhileSelecting = @"Pick an option...";
-		self->toolbarDoneButtonText = @"Done";
+        self->toolbarDoneButtonText = @"Done";
         self->toolbarCancelButtonText = @"Cancel";
         
         // hide the caret and its blinking
@@ -137,7 +141,7 @@
         }
     }
 
-    UIToolbar* toolbar = [[UIToolbar alloc] init];
+    UIToolbar* toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44)];
     toolbar.barStyle = self->toolbarStyle;
     [toolbar sizeToFit];
     
@@ -164,7 +168,7 @@
 
     //custom input view
     textField.inputView = pickerView;
-    textField.inputAccessoryView = toolbar;  
+    textField.inputAccessoryView = toolbar;
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)aTextField
