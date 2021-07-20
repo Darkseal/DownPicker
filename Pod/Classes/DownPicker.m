@@ -226,7 +226,7 @@
 
 -(void) setArrowImage:(UIImage*)image
 {
-    [(UIImageView*)self->textField.rightView setImage:image];
+    [self->textField setRightView:[[UIImageView alloc] initWithImage:image]];
 }
 
 -(void) setPlaceholder:(NSString*)str
